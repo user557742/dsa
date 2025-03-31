@@ -24,4 +24,8 @@ satisfies :thỏa mãn
 enforced : được thực thi
 requirement  : yêu cầu
 financial : tài chính
- 
+emergency : khẩn cấp 
+broadcasting :phát sóng
+walkie-talkies : máy bộ đàm
+ansmission radius : bán kính truyền đẫn
+hops : bước nhảy 
