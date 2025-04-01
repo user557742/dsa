@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/code/dsa",
-      "program": "d:/code/dsa/build/Debug/outDebug",
+      "cwd": "d:/code/dsa/cpp_file/doituyen/qhd_bitmask",
+      "program": "d:/code/dsa/cpp_file/doituyen/qhd_bitmask/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
