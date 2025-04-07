@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng Dẫn Bitmask DP (Quy Hoạch Động Sử Dụng Bitmask)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .note {
+            background-color: #e7f5fe;
+            padding: 10px;
+            border-left: 4px solid #3498db;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bitmask DP: Hướng Dẫn Toàn Diện</h1>
+
+    <div class="note">
+        <p>Bài viết này là bản dịch từ nội dung gốc tại <a href="https://nwatx.me/post/dpbitmasks" target="_blank">nwatx.me/post/dpbitmasks</a></p>
+    </div>
+
+    <h2>1. Giới Thiệu Về Bitmask DP</h2>
+    <p>Bitmask DP là kỹ thuật kết hợp quy hoạch động với thao tác bitmask để giải quyết hiệu quả các bài toán liên quan đến tập hợp con hoặc hoán vị. Kỹ thuật này đặc biệt hữu ích khi làm việc với không gian trạng thái có kích thước mũ, vì nó sử dụng các phép toán bit để biểu diễn và thao tác với tập hợp con một cách ngắn gọn.</p>
+
+    <h2>2. Khái Niệm Chính</h2>
+    <h3>a. Biểu Diễn Bitmask</h3>
+    <ul>
+        <li>Một bitmask biểu diễn tập hợp con các phần tử bằng cách sử dụng bit nhị phân.</li>
+        <li>Ví dụ: Tập hợp <code>{1, 3, 4, 8}</code> có thể biểu diễn dưới dạng <code>...100011010</code> (nhị phân), tương đương giá trị thập phân <code>282</code> (<code>2^8 + 2^4 + 2^3 + 2^1</code>).</li>
+        <li>Mỗi bit biểu thị sự hiện diện (<code>1</code>) hoặc vắng mặt (<code>0</code>) của một phần tử trong tập hợp con.</li>
+    </ul>
+
+    <h3>b. Các Phép Toán Bitmask</h3>
+    <p>Các phép toán thường dùng:</p>
+    <ul>
+        <li><strong>Hợp</strong>: <code>a | b</code> (kết hợp các phần tử từ cả hai tập hợp)</li>
+        <li><strong>Giao</strong>: <code>a & b</code> (các phần tử có mặt trong cả hai tập hợp)</li>
+        <li><strong>Hiệu đối xứng</strong>: <code>a ^ b</code> (các phần tử chỉ có trong một tập hợp)</li>
+        <li><strong>Kiểm tra thành viên</strong>: <code>s & (1 << x)</code> kiểm tra xem phần tử <code>x</code> có trong tập hợp con <code>s</code> không</li>
+    </ul>
+
+    <h3>c. Duyệt Qua Các Tập Con</h3>
+    <p>Để duyệt qua tất cả tập con của <code>n</code> phần tử:</p>
+    <pre><code>for (int i = 0; i < (1 << n); i++) {
+    // Xử lý tập con được biểu diễn bởi 'i'
+}</code></pre>
+    <p>Vòng lặp này chạy trong thời gian <code>O(2^n)</code>, khả thi với <code>n</code> nhỏ (ví dụ: <code>n ≤ 20</code>).</p>
+
+    <h2>3. Ứng Dụng</h2>
+    <h3>a. Bài Toán Chọn Lựa Tối Ưu</h3>
+    <p><strong>Bài toán</strong>: Chọn các mục hàng qua nhiều ngày để tối thiểu hóa chi phí, với giá cả thay đổi theo ngày.</p>
+    <p><strong>Trạng thái DP</strong>: <code>total[s][d]</code> = chi phí tối thiểu để mua tập con <code>s</code> vào ngày <code>d</code>.</p>
+    <p><strong>Chuyển trạng thái</strong>: Với mỗi ngày và tập con, cập nhật chi phí bằng cách bao gồm/loại trừ các mục:</p>
+    <pre><code>total[s][d] = min(total[s][d-1], total[s^(1<<x)][d-1] + price[x][d]);</code></pre>
+    <p>Độ phức tạp thời gian: <code>O(nk2^k)</code>.</p>
+
+    <h3>b. Đường Đi Hamilton</h3>
+    <p><strong>Bài toán</strong>: Đếm số đường đi thăm tất cả thành phố đúng một lần (Hamilton).</p>
+    <p><strong>Trạng thái DP</strong>: <code>dp[S][i]</code> = số đường đi kết thúc tại thành phố <code>i</code> sau khi thăm tập con <code>S</code>.</p>
+    <p><strong>Chuyển trạng thái</strong>: Cộng dồn các đường đi từ các thành phố liền kề:</p>
+    <pre><code>dp[S][i] += dp[S\{i}][x] for x in adj[i].</code></pre>
+    <p>Độ phức tạp thời gian: <code>O((n+m)2^n)</code>.</p>
+
+    <h2>4. Mẹo Triển Khai</h2>
+    <ul>
+        <li><strong>Tính toán trước mask</strong>: Sử dụng <code>(1 << n) - 1</code> để tạo mask với tất cả <code>n</code> bit được bật.</li>
+        <li><strong>Hiệu suất</strong>: Bitmask DP phù hợp cho <code>n</code> nhỏ do độ phức tạp mũ.</li>
+        <li><strong>Gỡ lỗi</strong>: In biểu diễn nhị phân của mask để kiểm tra logic tập con.</li>
+    </ul>
+
+    <h2>5. Ví Dụ Mã Nguồn</h2>
+    <p>Cho bài toán Đường Bay Hamilton:</p>
+    <pre><code>dp[1][1] = 1; // Trường hợp cơ sở: bắt đầu tại thành phố 1
+for (int s = 2; s < (1 << n); s++) {
+    for (int d = 1; d <= n; d++) {
+        if (!(s & (1 << (d-1))) continue;
+        for (int v : adj[d]) {
+            if (s & (1 << (v-1))) {
+                dp[s][d] += dp[s^(1<<(d-1))][v];
+            }
+        }
+    }
+}
+cout << dp[(1<<n)-1][n]; // Kết quả: số đường đi thăm tất cả thành phố kết thúc tại 'n'</code></pre>
+
+    <h2>Kết Luận</h2>
+    <p>Bitmask DP là kỹ thuật mạnh mẽ cho các bài toán tối ưu liên quan đến tập hợp con, cân bằng giữa khả năng biểu diễn và hiệu suất. Nắm vững các phép toán bit và cách biểu diễn trạng thái là chìa khóa để áp dụng hiệu quả.</p>
+</body>
+</html>
