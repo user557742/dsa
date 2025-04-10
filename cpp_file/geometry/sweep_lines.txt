@@ -1,0 +1,69 @@
+Cảm ơn bạn đã gửi tài liệu. Dưới đây là phần giải thích chi tiết bằng tiếng Việt về nội dung trong các trang mà bạn đã gửi, liên quan đến **thuật toán Sweep Line** — một kỹ thuật rất mạnh trong các bài toán hình học tính toán.
+
+---
+
+### 📘 **Chương 30: Thuật toán Sweep Line**
+
+#### ✅ Khái niệm cơ bản:
+Thuật toán **Sweep Line** (đường quét) hoạt động bằng cách chuyển một bài toán hình học thành các **sự kiện** (event) trên mặt phẳng. Ta **sắp xếp các sự kiện theo tọa độ x tăng dần** và xử lý chúng lần lượt. Đây là chiến lược cơ bản trong nhiều bài toán hình học.
+
+---
+
+### 📍 **Ví dụ 1: Tìm số người có mặt cùng lúc trong công ty**
+
+**Đề bài**: Cho thời gian đến và rời đi của từng nhân viên trong một ngày. Hỏi: **Lúc nào có nhiều người nhất trong công ty?**
+
+**Ý tưởng**:
+- Mỗi người tạo ra **2 sự kiện**: đến và đi.
+- Đến là sự kiện `+1`, đi là `-1`.
+- Sắp xếp tất cả các sự kiện theo thời gian, duyệt từ trái sang phải, và dùng biến `counter` để đếm số người hiện tại.
+- Kết quả là giá trị lớn nhất của `counter`.
+
+**Độ phức tạp**: `O(n log n)` (vì cần sắp xếp `2n` sự kiện, duyệt qua chúng là `O(n)`).
+
+---
+
+### 📍 **Ví dụ 2: Đếm số giao điểm của các đoạn thẳng ngang và dọc**
+
+**Ý tưởng**:
+- Các giao điểm chỉ xảy ra khi đoạn ngang và đoạn dọc **cắt nhau**.
+- Duyệt từ trái sang phải theo trục x.
+- Xử lý 3 loại sự kiện:
+  1. Bắt đầu đoạn ngang → chèn y vào cây.
+  2. Kết thúc đoạn ngang → xóa y khỏi cây.
+  3. Đoạn dọc → đếm bao nhiêu đoạn ngang giao với đoạn này (trong khoảng y1 đến y2).
+
+**Dữ liệu**: Dùng cây phân đoạn, BIT hoặc `std::set` có nén tọa độ.
+
+**Độ phức tạp**: `O(n log n)`
+
+---
+
+### 📍 **Ví dụ 3: Tìm cặp điểm gần nhau nhất**
+
+**Đề bài**: Cho `n` điểm, tìm hai điểm gần nhau nhất (theo khoảng cách Euclid).
+
+**Ý tưởng Sweep Line**:
+- Sắp xếp các điểm theo x.
+- Duyệt từ trái sang phải, luôn duy trì một `set` các điểm nằm trong khoảng `x - d` đến `x`, với `d` là khoảng cách ngắn nhất hiện tại.
+- Chỉ kiểm tra các điểm trong phạm vi `y` từ `y - d` đến `y + d`.
+- Nếu tìm được khoảng cách nhỏ hơn thì cập nhật `d`.
+
+**Độ phức tạp**: `O(n log n)`
+
+---
+
+### 📍 **Ví dụ 4: Bài toán Convex Hull (bao lồi)**
+
+**Đề bài**: Cho `n` điểm, tìm bao lồi (đa giác lồi nhỏ nhất bao toàn bộ điểm).
+
+**Thuật toán của Andrew**:
+1. Sắp xếp các điểm theo tọa độ x và sau đó y.
+2. Xây dựng phần **trên** và **dưới** của bao lồi riêng biệt.
+3. Duyệt từng điểm, kiểm tra xem 3 điểm cuối có tạo ra đoạn rẽ trái không. Nếu có thì xóa điểm thứ hai.
+
+**Độ phức tạp**: `O(n log n)` vì bước sắp xếp.
+
+---
+
+Nếu bạn muốn mình giải chi tiết từng bài bằng tiếng Việt, có ví dụ minh họa hoặc mã giả (pseudo-code), thì bạn cứ nói nhé. Mình có thể hướng dẫn từng bài một theo phong cách thi Olympic Tin học hoặc lập trình thi đấu.
