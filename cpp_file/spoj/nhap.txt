@@ -1,0 +1,16 @@
+do thi co n dinh m canh . lap cam
+moi canh co trong so : chi phi lap camera
+tinh chi phi nho nhat de co the co cammera tren mọi chu trinh
+Dữ liệu:
+6 7
+1 2 5
+2 3 3
+1 4 5
+4 5 4
+5 6 4
+6 3 3
+5 2 3
+
+Kết qủa
+6
+1)tìm toàn bộ chu trình
