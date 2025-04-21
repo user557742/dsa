@@ -63,19 +63,19 @@ void sub3(){
 }
 vector<pair<ll,int>> qhd[N];
 void sub4(){
-    qhd[1].push_back({a[1],0});
-    rei(i,2,n){
-        qhd[i].push_back({a[i],0});
-        for(pair<ll,int>x:qhd[i-1]){
-            qhd[i].push_back(x);
-            qhd[i].push_back(make_pair(__gcd(x.first,a[i]),x.second+1));
-        }
-    }
     int ds=0;
-    for(pair<ll,int> x:qhd[n]){
-        ds=max(ds,x.second);
-    }
-    cout<<ds;
+    rei(i,1,n) if(a[i]%2==0) ds++;
+    int ds1=0;
+    rei(i,1,n) if(a[i]%3==0) ds1++;
+    int ds2=0;
+    rei(i,1,n) if(a[i]%5==0) ds2++;
+    int ds3=0;
+    rei(i,1,n) if(a[i]%7==0) ds3++;
+    int ds4=0;
+    rei(i,1,n) if(a[i]%11==0) ds4++;
+    int ds5=0;
+    rei(i,1,n) if(a[i]%13==0) ds5++;
+    cout<<max({ds,ds1,ds2,ds3,ds4,ds5});
 }
 int main(){
 	faster
@@ -85,7 +85,7 @@ int main(){
     rei(i,1,n) dsdd=max(dsdd,a[i]);
     if(n<=2) sub1();
     else if(n<=18) sub2();
-    else if(dsdd<=1e6) sub3();
+    else if(dsdd<lim) sub3();
     else sub4();
 	return 0;
 }
