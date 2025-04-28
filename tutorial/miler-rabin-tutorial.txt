@@ -1,0 +1,99 @@
+#-----------------------------------------------------Miler-Rabin---------------------------------------------------------------
+* tư tưởng : dựa trên định lý femart 
++ các bước triển khai: để kiểm tra xem n có phải số nguyên tố không
+    $B1: phân tích n-1 thành 2^r * d với d là số lẻ 
+    $B2: lấy ngẫu nhiên một số a bất kỳ trong khoảng [2,n-2]
+    $b3: tính x=(a^d)%n
+    $b4: nếu x==1 hoặc x=n-1 coi như qua nếu không thì tiếp bước 5
+    $b5: lặp từ 1 đến r-1, cập nhật x=(x^2)%n nếu x=n-1 qua sang cơ số tiếp
+    - nếu sau toàn bộ vòng lặp mà không được thì là hợp số
+int rd(int l, int r) {
+    static std::mt19937 gen{ std::random_device{}() };      // seed và engine chỉ khởi tạo một lần
+    uniform_int_distribution<> dist(l, r);            // phân phối đồng đều trên [l, r]
+    return dist(gen);                                      // lấy giá trị ngẫu nhiên
+}
+ll bpow(ll a,ll b,ll mod){
+    ll ds=1;
+    while(b>0){
+        if(b%2) ds=(ds*a)%mod;
+        a=(a*a)%mod;
+        b/=2;
+    }
+    return ds;
+}
+bool test(ll a,ll n,ll d,ll r){
+    ll x=bpow(a,d,n);
+    if(x==1||x==n-1) return 1;
+    rei(j,1,r-1){
+        x=(x*x)%n;
+        if(x==n-1) return 1;
+    } 
+    return 0;
+}
+bool Miler_Rabin(ll n,ll k){
+    if(n<2) return 0;
+    if(n==3||n==2) return 1;
+    if(n%2==0) return 0;
+    int r=0;
+    ll d=n-1;
+    while(d%2==0){
+        r++;
+        d/=2;
+    }
+    rei(i,1,k){
+        ll a=rd(2,n-2);
+        if(!test(a,n,d,r)) return 0;
+    }
+    return 1;
+}
+* chat_gpt ver:
+// 1. Uniform random integer in [l, r]
+int rd(int l, int r) {
+    static mt19937 gen{ random_device{}() };             // seed once :contentReference[oaicite:7]{index=7}
+    uniform_int_distribution<int> dist(l, r);           // explicit <int> in C++14 :contentReference[oaicite:8]{index=8}
+    return dist(gen);
+}
+
+// 2. Fast modular exponentiation
+ll bpow(ll a, ll b, ll mod) {
+    ll res = 1;
+    a %= mod;
+    while (b > 0) {
+        if (b & 1) res = ( (__int128)res * a ) % mod;   // avoid overflow :contentReference[oaicite:9]{index=9}
+        a = ( (__int128)a * a ) % mod;
+        b >>= 1;
+    }
+    return res;
+}
+
+// 3. Single-base Miller–Rabin test
+bool witness(ll a, ll n, ll d, int r) {
+    ll x = bpow(a, d, n);
+    if (x == 1 || x == n - 1) return true;              // quick pass :contentReference[oaicite:10]{index=10}
+    for (int j = 1; j < r; ++j) {
+        x = ( (__int128)x * x ) % n;
+        if (x == n - 1) return true;
+    }
+    return false;
+}
+
+// 4. Miller_Rabin primality test
+bool Miller_Rabin(ll n, int k) {
+    if (n < 2) return false;
+    if (n == 2 || n == 3) return true;
+    if ((n & 1) == 0) return false;
+
+    ll d = n - 1;
+    int r = 0;
+    while ((d & 1) == 0) {
+        d >>= 1;
+        ++r;
+    }
+
+    for (int i = 0; i < k; ++i) {
+        ll a = rd(2, n - 2);
+        if (!witness(a, n, d, r))
+            return false;  // composite witness found
+    }
+    return true;  // probably prime
+}
