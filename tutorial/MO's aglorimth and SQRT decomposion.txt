@@ -1,0 +1,6 @@
+############################################## chia căn và thuật toán MO ###########################################################################
+* Chia căn : 
+    + tư tưởng : luôn chia khoảng đang xét thành các khoảng nhỏ có độ đài √n với n là độ dài khoảng đang xét 
+    + sau đó ta tiền xử lý mảng để có thể đễ đàng lấy được kết quả mà không cần phải đi đến từng phần tử của block
+    + mỗi lần thực hiên truy vấn hay lấy kết quả đểu đi nhảy qua các block cho nhanh từ đó đạt được độ phức tạp O(√n)
+    
