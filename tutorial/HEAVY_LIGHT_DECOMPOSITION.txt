@@ -1,0 +1,6 @@
+################################################################### HLD ##################################################################################
+* Tư tưởng : là cách phân chia các cây con trong cây thành 2 loại : 
+    + nặng : cây nặng có số con lớn nhất
+    + nhẹ : cây con còn lại
+# CM được có không quá O(logn cây con nặng và nhẹ)
++ do đó : khi sử dụng dfs các cây nặng sẽ thành 1 chuỗi 

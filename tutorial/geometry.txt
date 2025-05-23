@@ -1,0 +1,23 @@
+* Vector
+    - xác định tọa độ vector: 
+        +) với điểm bắt đầu là (x1,y1) kết thúc là (x2,y2) thì vector có tọa độ là (x2-x1,y2-y1)
+        +) độ lớn là : ((x2-x1)*(x2-x1),(y2-y1)*(y2-y1))
+    - cộng trừ 2 vector : A(x1,y1) , B(x2,y2) 
+        +) A(+-)B=(x1(+-) x2 , y1 (+-) y2); 
+    - tích vô hướng : (dot produce)
+        +) dot(u,v) = |u|*|v|*cos(u,v)
+        +) dot(u,v) = x1*x2+y1*y2
+    - tích có hướng : (cross produce)
+        +) dot(u,v) = |u|*|v|*sin(u,v)
+* đường thẳng
+    +)  vector chỉ phương : là vector song song hoặc trùng với đường thẳng
+    +) vector pháp tuyến : là vector vuông góc với đường thẳng
+    + pt đường thẳng : ax+by+c=0
+    + vector phap tuyến u:(a,b)
+    + vector chỉ phương : (-b,a)
+    + hệ số góc 
+    +) vị trí của 2 đường thẳng :
+        + song song khi vector pháp tuyến/ chỉ phương song song
+        vuông đựa vào vector chỉ phương hoặc pháp tuyến
+
+        

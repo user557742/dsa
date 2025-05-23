@@ -1,0 +1,14 @@
+################################################################################## STRING #########################################################
+* các khái niệm 
+    - substring (xâu con) : là một đoạn con liên tiếp trong xâu con ban đầu
+    - prefix (tiền tố) : là xâu con ở phần đầu của xâu chính
+    - suffix (hậu tố ) : là xâu con ở phần cuối của xâu chính
+* các dạng bài :
+    + so khớp chuỗi : dùng KMP, HASH , Z aglorithm
+    + Palindorme : HASH , Palindrome tree,QHD
+    + cấu trúc dữ liệu : 
+        - trie
+        - Suffix Array
+        - Suffix Automaton
+        - Suffix Tree
+        - Aho Corasick
