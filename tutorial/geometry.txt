@@ -19,5 +19,5 @@
     +) vị trí của 2 đường thẳng :
         + song song khi vector pháp tuyến/ chỉ phương song song
         vuông đựa vào vector chỉ phương hoặc pháp tuyến
-
         
+

@@ -1,0 +1,27 @@
+* nguyên tắc:
+        Liên tục: Luyện 3–5 buổi/tuần, mỗi buổi ≥ 1 giờ.
+
+        Mục tiêu rõ: Đặt mục tiêu tuần (chủ đề, % giảm WA, insights…).
+
+        Áp lực giả lập: Contest ảo theo đúng thời gian thực.
+
+        Feedback nhanh: Ghi log WA/TLE → rút kinh nghiệm → đọc editorial nhưng tóm tắt bằng lời.
+
+        Luyện có chủ đích: Chọn bài theo mục tiêu (edge‑case, biến thể…).
+
+        Mô hình hóa: Trước code, tóm tắt “input → state → transition → output”.
+
+        Checkpoint tâm lý: 15–20′ nếu chưa thấy hướng → Decompose/Variant/Hint → hoặc lướt editorial.
+
+        Theo dõi tiến độ: Log số WA, thời gian, insights; review hàng tuần.
+
+        Đa dạng & lặp lại: Xen kẽ A/B và C/D; ôn lại pattern sau 1–2 tuần.
+
+        Tâm lý tăng trưởng: Nhìn WA là cơ hội; self‑talk tích cực; kiên nhẫn.
+5P – Khung Practice Session
+    Bước	Tên (P…)	Làm gì?
+    1	Phân tích	Đọc đề – Xác định tối ưu gì, pattern, test lừa (10–15′)
+    2	Programming	Code theo hướng đã xác định (40–45′)
+    3	Phá	Tự sinh test-case edge/random (15–20′)
+    4	Phát hiện	Debug & submit – note WA/TLE + fix (20–25′)
+    5	Phản hồi	So sánh editorial – rút 3 insight chính (10–15′)

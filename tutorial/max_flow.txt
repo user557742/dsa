@@ -1,0 +1,20 @@
+* các khái niệm cơ bản
+    - mạng : đồ thị không chu trình có hướng tồn tại 2 đỉnh đặc biệt 
+        + đỉnh đầu tiên s : chỉ có cạnh đi ra
+        + đỉnh còn lại t : chỉ có cạnh đi vào
+        + mỗi cạnh có một trọng số là khả năng thông qua
+    - luồng là cách đặt một giá trị c làm trọng số  cho tất cả các cạnh trên 1 đường đi nào đó từ s đến t mà không vượt quá trọng số của bất kỳ cạnh nào trên đường đi
+     (cách bơm nước vào hệ thống cống sao cho không có nước bị tích tụ mà nước vẫn đi từ nguồn đến đích)
+    - luồng cực đại là giá trị c lớn nhất có thể đạt được
+     (lượng nước lớn nhất có thể bơm)
+    
+    + lát cắt : là cách chia đồ thị thành 2 tập hợp tập đầu tiên chứa nguồn , tập thứ 2 chứa đích
+    # dung lượng của lát cắt : tổng mọi cạnh (u,v) mà (u thuộc tập 1) (v thuộc tập 2)
+    ------> định lý min-cut max-flow :dung lượng nhỏ nhất của các lát cắt  là luồng cực đại  
+* thuật toán dinic 
+    - ý tưởng : 
+        -) tạo bản đồ đường cấp chỉ đi từ lv cao xuống lv thấp
+        -) dfs để chặn các đường ---> ghi nhận kết quả 
+        -) sau khi chặn hết bản đồ ---> bỏ tất cả các cạnh của bản đồ cũ tạo bản đồ mới từ những cạnh còn lại rồi lại lặp lại thao tác cho đến khi hết cỡ 
+        + lẫy kq
+        

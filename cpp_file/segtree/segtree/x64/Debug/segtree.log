@@ -1,0 +1,5 @@
+﻿  segtree.cpp
+  sum_rangeupd_rangeque.cpp
+D:\code\dsa\cpp_file\segtree\segtree\sum_rangeupd_rangeque.cpp(6,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  segtree.vcxproj -> D:\code\dsa\cpp_file\segtree\x64\Debug\segtree.exe

@@ -1,0 +1,3 @@
+﻿  PATHQR2.cpp
+D:\code\dsa\cpp_file\HLD\HLD\PATHQR2.cpp(4,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  HLD.vcxproj -> D:\code\dsa\cpp_file\HLD\x64\Debug\HLD.exe
