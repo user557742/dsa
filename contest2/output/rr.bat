@@ -1,0 +1,4 @@
+T1.exe
+SEARCH.exe
+SEARCH2.exe
+fc /w SEARCH.OUT SEARCH.ANS
