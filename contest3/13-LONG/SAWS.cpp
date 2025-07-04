@@ -1,19 +1,19 @@
 #include <bits/stdc++.h>
 using  namespace std;
-const int maxn = 2e5+1;
+const int maxn = 1e6+1;
 int n,k;
-int h[maxn],m[maxn];
 typedef long long ll;
+ll h[maxn],m[maxn];
 ll s[maxn];
 ll f(int x){
-    int i=lower_bound(h+1,h+1+n,x)-h;
-    return s[n]-s[i-1]-x*(n-i+1);
+    int i=upper_bound(h+1,h+1+n,x)-h;
+    return s[n]-s[i-1]-1ll*x*(n-i+1);
 }
 void bs(ll p,int lo,int hi){
     while(lo+1<hi){
         int mid=(lo+hi)/2;
         if(f(mid)>=p) lo=mid;
-        else hi=mid; 
+        else hi=mid;
     }
     cout<<lo<<" ";
 }
@@ -28,6 +28,6 @@ int main(){
     for(int i=1;i<=k;i++) cin>>m[i];
     sort(h+1,h+n+1);
     for(int i=1;i<=n;i++) s[i]=s[i-1]+h[i];
-    int lo=0,hi=h[n];
+    int lo=0,hi=h[n]+1;
     for(int i=1;i<=k;i++) bs(m[i],lo,hi);
 }
