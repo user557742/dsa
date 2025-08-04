@@ -1,0 +1,2 @@
+nkleaves ////// lqdoj (0/100) (loi qhd) 
+LCS2 //// spoj (0/100) (khong co y tuong)
