@@ -1,0 +1,4 @@
+gen.exe
+INCCELLS.exe
+INCCELLS_s.exe
+fc /w INCCELLS.OUT INCCELLS.ANS

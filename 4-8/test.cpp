@@ -64,10 +64,10 @@ void sub3(){
     cout<<dp[m];
 }
 int main(){
-    if(fopen("WALK.INP","r")){
+    /*if(fopen("WALK.INP","r")){
         freopen("WALK.INP","r",stdin);
         freopen("WALK.OUT","w",stdout);
-    }
+    }*/
 
     ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
     cin>>n>>m;
@@ -81,3 +81,4 @@ int main(){
     else sub3();
     return 0;
 }
+
