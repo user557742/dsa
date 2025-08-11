@@ -1,0 +1,4 @@
+gen.exe
+COLOURQ.exe
+COLOURQ_s.exe
+fc /w COLOURQ.OUT COLOURQ.ANS
